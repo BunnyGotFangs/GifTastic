@@ -1,7 +1,7 @@
 
 //need to have a function created now so that this can be called over and over again 
 console.log("Making sure html is reaching file");
-var topic = [];
+var topic = ["Hemlock","BellaDonna","Anthrax"];
 
 //function searchGif(poisons) {
 $("button").on("click", function() {
@@ -47,28 +47,43 @@ console.log(localURL);
 //now changing the index.html so the new buttons are visible and selectable
         poisonDiv.append(pCap, pRat);
         poisonDiv.append(poisonImage);
-        $("#selection").prepend(poisonDiv);}
+        $("#result").prepend(poisonDiv);}
       
     });
-});
-// next section is to be able to add new button from the input poison
-//assuming the about onclick was was working then need to add new buttons
+
+// next section is to be able to add new values in the topic array
+//assuming the about onclick was was working then need to add to the array
 //need another function to loop for an onclick event
+$("#newGif").on("click", function(event){
 //onclick event for the pick your posion button
+event.preventDefault();
 //have to add prevent statement ... not exactly clear what it does but we use all the time
-//need to capture the text as a variable
-// create button
-// give button an attribute
-//give button a name from the aboce variable
-//append the selection section so button appears there
+//need to capture the text as a variable have use the val to value and trim to have just the input no spaces
+var inputPoison = $("#giff-input").val().trim();
+// changing up code, becuase i need to add to the array then I need another function that creates buttons from the array
+inputPoision.push(topic);
+//once get the button creation function in place then I would call that function here, totally missed that in thought process thinking i do it all here
 // end this function
+}
+)});
 
 
-
-// lastly need to clear the results panel, when a new button is click before we load new images
-  
+function clearResult(){
+$("#result").empty();  
+}
 // Now there needs to be a function created that we when the buttons are clicked that it will call the query, hit the results and publish them and this needs to be repeatable 
 
-// next need to be able to be able to stop and start the giphy
-
+// ((not sure if this is right and haven't worked throug it found it from last weekend) need to review and comment and correct) next need to be able to be able to stop and start the giphy
+$(".src").on("click", function() {
+  var state = $(this).attr("data-state");
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
 // lastly need to clear the results panel, when a new button is click before we load new images
+function clearResult(){
+  $("#result").empty();  }
+})
