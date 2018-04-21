@@ -1,19 +1,19 @@
-// desclaration of needed global variables including starting buttons, apikey, url
-var topic = [];
-var apiKey = "Atz4BqbSfFySR78ltn4KnkbuESh3unL4";
-var gifUrl = "https://api.giphy.com/v1/gifs/search?";
-var queryUrl = gifUrl + "api_key=" + apiKey  + "&limit=10" + "&q=" ; 
-
-console.log("Making sure html is reaching file");
-
 
 //need to have a function created now so that this can be called over and over again 
-function searchGif(poisons) {
+console.log("Making sure html is reaching file");
+var topic = [];
+
+//function searchGif(poisons) {
 $("button").on("click", function() {
 // desclared global, but reviewing back seems to need local so creting local = to global 
 // know I need more local variables, not quite sure what they are yet, so will add as needed  
-  var poisonInfo = $(this).attr("poison");
-  var localURL = queryUrl + posionInfo;
+
+var apiKey = "Atz4BqbSfFySR78ltn4KnkbuESh3unL4";
+var gifUrl = "https://api.giphy.com/v1/gifs/search?q="
+  
+var poisonInfo = $(this).attr("poison");
+
+var localURL = gifUrl + posionInfo + "api_key=" + apiKey  + "&limit=10" ;
 //((UGH Still not getting this to work))
 console.log(localURL);
   // Performing an AJAX request with the queryURL
@@ -50,8 +50,20 @@ console.log(localURL);
         $("#selection").prepend(poisonDiv);}
       
     });
-});}
+});
 // next section is to be able to add new button from the input poison
+//assuming the about onclick was was working then need to add new buttons
+//need another function to loop for an onclick event
+//onclick event for the pick your posion button
+//have to add prevent statement ... not exactly clear what it does but we use all the time
+//need to capture the text as a variable
+// create button
+// give button an attribute
+//give button a name from the aboce variable
+//append the selection section so button appears there
+// end this function
+
+
 
 // lastly need to clear the results panel, when a new button is click before we load new images
   
